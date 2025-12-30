@@ -1,0 +1,24 @@
+{
+  "name": "cloud_flex_homework",
+  "version": "1.0.0",
+  "description": "cloud flex landing",
+  "homepage": "https://github.com/Djamelea/cloud_flex_homework#readme",
+  "bugs": {
+    "url": "https://github.com/Djamelea/cloud_flex_homework/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Djamelea/cloud_flex_homework.git"
+  },
+  "license": "ISC",
+  "author": "Djamile Abdullaeva",
+  "type": "commonjs",
+  "main": "index.html",
+  "scripts": {
+    "sass:watch": "sass --style=expanded --watch styles:dist"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.3",
+    "sass": "^1.97.1"
+  }
+}
