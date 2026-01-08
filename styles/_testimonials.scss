@@ -1,0 +1,114 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'placeholders';
+@use 'sass:color';
+
+.testimonials__section {
+    padding: 0 0 128px 0;
+    margin: 0 auto;
+
+    .testimonials {
+        @include m.d-flex(start, center, nowrap, column, 0, 80px);
+
+        &__title {
+            @include m.font(56px, 700, v.$color_white);
+        }
+
+        .slider {
+            position: relative;
+            @include m.d-flex(start, center, nowrap, column, 0, 64px);
+
+            &__left-btn {
+                @extend %slider-button;
+                rotate: z 45deg;
+                @include m.position(absolute, 1, -1, top, left, 100px, -100px);
+
+                &-icon {
+                    @extend %slider-button-icon;
+                    rotate: z 315deg;
+                }
+            }
+
+            &__right-btn {
+                @extend %slider-button;
+                rotate: z 45deg;
+                @include m.position(absolute, 1, -1, top, right, 100px, -100px);
+
+                &-icon {
+                    @extend %slider-button-icon;
+                    rotate: z 315deg;
+                }
+            }
+
+            &__left-btn:hover,
+            &__right-btn:hover {
+                cursor: pointer;
+                background-color: color.adjust(v.$color_white, $alpha: -0.85);
+
+                .slider__left-btn-icon,
+                .slider__right-btn-icon {
+                    fill: v.$color_black;
+                }
+            }
+
+            &__points {
+                @include m.d-flex(start, center, nowrap, row, 8px, 0);
+
+                &-item {
+                    width: 8px;
+                    height: 8px;
+                    background-color: v.$color_white;
+                    border-radius: 99px;
+                }
+
+                &-item:hover {
+                    cursor: pointer;
+                    scale: .8;
+                    background-color: v.$color_gray;
+                }
+            }
+
+            @media (max-width: v.$media_md) {
+                &__left-btn {
+                    top: unset;
+                    bottom: 24px;
+                    left: 24px;
+                }
+
+                &__right-btn {
+                    top: unset;
+                    bottom: 24px;
+                    right: 24px;
+                }
+
+                &__points {
+                    margin: 0 0 54px 0;
+                }
+            }
+        }
+
+        @media (max-width: v.$media_lg) {
+            @include m.d-flex(start, center, nowrap, column, 0, 72px);
+    
+            &__title {
+                @include m.font(48px, 700, v.$color_white);
+            }
+        }
+    
+        @media (max-width: v.$media_md) {
+            @include m.d-flex(start, center, nowrap, column, 0, 56px);
+    
+            &__title {
+                @include m.font(40px, 700, v.$color_white);
+            }
+        }
+    
+        @media (max-width: v.$media_sm) {
+            @include m.d-flex(start, center, nowrap, column, 0, 40px);
+    
+            &__title {
+                @include m.font(32px, 700, v.$color_white);
+            }
+        }
+    }
+}
