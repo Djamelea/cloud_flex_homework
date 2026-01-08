@@ -1,0 +1,84 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+@use 'placeholders';
+@use 'sass:color';
+
+.form-section {
+    position: relative;
+    padding: 128px 0;
+    margin: 0 auto;
+    overflow: hidden;
+
+    &__bg-cloud {
+        @extend %cloud-bg;
+    }
+
+    .cloud__left {
+        @include m.position(absolute, -1, -1, top, left, 0, -352px);
+    }
+
+    .cloud__right {
+        @include m.position(absolute, -1, -1, bottom, right, 0, -352px);
+    }
+
+    .form {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 0 32px;
+        @include m.d-flex(start, center, nowrap, column, 0, 80px);
+
+        &__title {
+            text-align: center;
+            @include m.font(48px, 700, v.$color_white);
+        }
+
+        &__wrapper {
+            width: 100%;
+            @include m.d-flex(start, center, nowrap, column, 0, 24px);
+            
+            &-name,
+            &-email,
+            &-text {
+                @extend %input-template;
+            }
+
+            &-submit-btn {
+                width: 100%;
+                padding: 16px 24px;
+                border: none;
+                border-radius: 99px;
+                background-color: v.$color_black;
+                @include m.font(16px, 500, v.$color_white);
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: color.adjust(v.$color_black, $alpha: -0.16);
+                }
+
+                &:focus {
+                    outline: hidden;
+                }
+
+                &:focus-visible {
+                    outline: 2px solid v.$color_white;
+                }
+            }
+        }
+
+        @media (max-width: v.$media_lg) {
+            @include m.d-flex(start, center, nowrap, column, 0, 64px);
+
+            &__title {
+                @include m.font(40px, 700, v.$color_white);
+            }
+        }
+
+        @media (max-width: v.$media_sm) {
+            @include m.d-flex(start, center, nowrap, column, 0, 40px);
+
+            &__title {
+                @include m.font(24px, 700, v.$color_white);
+            }
+        }
+    }
+}
